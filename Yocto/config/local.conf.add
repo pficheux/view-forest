@@ -1,0 +1,15 @@
+# Local configuration
+MACHINE = "raspberrypi0-wifi"
+
+ENABLE_UART = "1"
+INHERIT += "rm_work"
+IMAGE_ROOTFS_EXTRA_SPACE = "10000"
+EXTRA_IMAGE_FEATURES += "package-management ssh-server-dropbear debug-tweaks"
+PACKAGE_CLASSES = "package_ipk"
+
+DISTRO_FEATURES_append = " wifi"
+IMAGE_INSTALL_append = " mosquitto-clients haveged"
+IMAGE_INSTALL_append = " mpl115a2 i2c-tools"
+
+# Add I2C
+RPI_EXTRA_CONFIG_append = " \n# Add I2C support\ndtparam=i2c_arm=on"
