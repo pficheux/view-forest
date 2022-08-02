@@ -12,10 +12,13 @@ The forest is shared between the departements of Gironde, Landes and Lot-et-Garo
 
 ### Goal
 
-The the goal of the project is to develop and install a connected system in order to detect a "start of fire" in a forest and so send and alarm to the local fire department. Here are the prerequistes:
+The the goal of the project is to develop and install a connected system in order to detect a "start of fire" in a forest and send an alarm to the local fire department.
 
-- Using cheap hardware such as common microcontrollers based board (ESP32, RP2040)
-- Open source software (and hardware if necessary)
+Here are the prerequistes:
+
+- Using cheap hardware such as common microcontrollers based boards (ESP32, RP2040) with low power consumption
+- Using a LPWAN network to send the data (LoRA, Sigfix, NB-IOT, LTE-M)
+- Open source software (and hardware if necessary) !
 
 ## Fire detection principles
 
