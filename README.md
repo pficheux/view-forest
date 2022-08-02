@@ -26,11 +26,19 @@ TBC
 
 ### Camera based system
 
+Pros / cons
+
 TBC
+
+-> Watchtower + video/image analysis
+
+Pro/cons
 
 ### Sensor based system
 
 TBC
+
+Pros / cons
 
 ## Project architecture
 
