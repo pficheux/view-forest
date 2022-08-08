@@ -5,7 +5,7 @@
 ### Context
 
 The evolution of the climate leads us to be very attentive to the preservation of our natural heritage. During the
-summer 2022, there was an explosion of the number of fires all around the world, include Europe and France. The south west
+summer 2022, there was an explosion of the number of fires all around the world, including Europe and France. The south west
 of France is very famous for the "forêt de Landes" (The Landes Forest) wich is considered as one of the biggest in Europe.
 
 The forest is shared between the departements of Gironde, Landes and Lot-et-Garonne (Nouvelle Aquitaine). The area is about 1000000 ha. In july 2022, two major fires in Gironde destroyed more than 20000 ha in La Teste-de-Buch and Landiras.
