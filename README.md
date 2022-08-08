@@ -12,7 +12,7 @@ The forest is shared between the departements of Gironde, Landes and Lot-et-Garo
 
 ### Goal
 
-The the goal of the project is to develop and install a connected system in order to detect a "start of fire" in a forest and send an alarm to the local fire department.
+The the goal of the project is to develop and install a connected system in order to detect a "start of fire" in a forest and send an alarm to the local fire department. In a final version, a dashboard will be provided in order to check the data during a period of time.
 
 Here are the prerequistes:
 
