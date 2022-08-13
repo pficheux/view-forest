@@ -1,0 +1,26 @@
+1- Install the script and the provided .service file
+
+# cp get_bme688_values.sh /usr/local/bin/
+# cp bme688-mqtt.service /etc/systemd/system/
+
+2- Start / stop the service and see syslogd traces
+
+# systemctl start bme688-mqtt.service
+# journalctl -f
+
+# systemctl stop bme688-mqtt.service
+# journalctl -f
+
+
+3- Activate the service (started at boot time)
+
+# systemctl enable bme688-mqtt.service
+# reboot
+
+# journalctl -f
+
+4- If you can to desactivate the service
+
+# systemctl disable bme688-mqtt.service
+
+

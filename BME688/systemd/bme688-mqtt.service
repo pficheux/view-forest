@@ -1,0 +1,18 @@
+[Unit]
+Description=MQTT service for BCM688
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/get_bme688_values.sh
+WorkingDirectory=/home/pierre
+# Mode trace
+StandardOutput=syslog
+StandardError=syslog
+#StandardOutput=null
+#StandardError=null
+Restart=always
+User=pierre
+
+[Install]
+WantedBy=multi-user.target
+
