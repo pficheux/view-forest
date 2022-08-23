@@ -22,10 +22,10 @@ Here are the prerequistes:
 
 ## Current status
 
-The current repository includes 2 simple demonstrations on Raspberry Pi :
+The current repository includes 2 simple demonstrations on Raspberry Pi:
 
-- ```Yocto``` MQTT demo using a MPL115A2 sensor and sending the temperature to test.mosquitto.org using the "view-forest" topic (Yocto based)
-- ```BME688``` MQTT demo using a BME688 sensor and sending the values (temperature, pressure, hygrometry, gas resistance) to test.mosquitto.org using the "view-forest-bme688" topic
+- ```Yocto``` MQTT demo using a MPL115A2 sensor and sending the temperature to "test.mosquitto.org" using the "view-forest" topic (Yocto based)
+- ```BME688``` MQTT demo using a BME688 sensor and sending the values (temperature, pressure, hygrometry, gas resistance) to "test.mosquitto.org" using the "view-forest-bme688" topic
 
 
 
