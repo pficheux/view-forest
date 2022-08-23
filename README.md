@@ -17,56 +17,15 @@ The the goal of the project is to develop and install a connected system in orde
 Here are the prerequistes:
 
 - Using cheap hardware such as common microcontrollers based boards (ESP32, RP2040) with low power consumption
-- Using a LPWAN network to send the data (LoRA, Sigfix, NB-IOT, LTE-M)
+- Using a LPWAN network to send the data (LoRA, Sigfox, NB-IOT, LTE-M)
 - Open source software (and hardware if necessary) !
 
-## Fire detection principles
+## Current status
 
-Fire is a complex physico-chemical process resulting from the interaction between a fuel (in our case the trees) and an oxidizer (the oxygen in the air).
-This oxidation-reduction reaction requires an activation energy and is characterized by a strong production of heat and light. These three elements are essential to maintain
-combustion and tThis principle is commonly illustrated by the fire triangle. The fire triangle or combustion triangle is a simple model for understanding the necessary ingredients
-for most fires (see https://en.wikipedia.org/wiki/Fire_triangle).
+The current repository includes 2 simple demonstrations on Raspberry Pi :
 
-The products formed by combustion are  carbon dioxide (CO2) and water (H2O). On the other hand, when the oxidant is in default with respect to the stoichiometric composition, the fuel
-does not burn in its entirety and the combustion is said to be incomplete or reducing. The main products of combustion are then carbon dioxide (CO2), water (H2O) and a
-complex set of gases (the most abundant of which are carbon monoxide (CO), methane (CH4), carbon monoxide nitrogen (NO)), volatile and non-volatile compounds and aerosols.
-
-Therefore, a fire can be detected using the following criteria
-
-- temperature (ambient or infrared detection)
-- smoke / gas (CO2, CO, etc.)
-
-
-### Camera based system
-
-Such a system is based on the "Fire lookout tower" concept which has been used for a long time (See https://www.fs.usda.gov/detail/r1/recreation/?cid=fsp5_030804).
-Instead of having a man watching an event around, the camera records a video and
-provides an realtime image analysis. Such a system relies on visual recognition of smoke. It can detect fires only if a large smoke plume is visible. Additionnaly it does not work at night.
-
-Some systems are installed in the Landes department.
-
-### Sensor based system
-
-The sensor (IoT) base approach is new as it needs several criterias:
-
-- a low power sensor (no power supply in the forest !)
-- a low power network (no Wi-Fi in the forest)
-
-As there could be some calculation to do, the data will be sent to the Internet through an IoT platform (It's not possible to do a calculation on the sensor
-because of power consumption).
-
-
-## Project architecture
-
-TBD
-
-## Planning
-
-TBD
-
-## Project Team
-
-TBD
+- Yocto  -> MQTT demo using a MPL115A2 sensor and sending the temperature to test.mosquitto.org using the "view-forest" topic (Yocto based)
+- BME688 -> MQTT demo using a BME688 sensor and sending the values (temperature, pressure, hygrometry, gas resistance) to test.mosquitto.org using the "view-forest-be688" topic
 
 
 
