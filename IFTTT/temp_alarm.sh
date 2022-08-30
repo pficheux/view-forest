@@ -1,10 +1,15 @@
 #!/bin/sh
+#
+# Get the temperature from a MPC9808 sensor and send an alarm with IFTTT
+# Don't send the alarm if already sent before SEND_DELAY
+#
 set -x
 
 TMAX=30
 SLEEP_T=5
 DATE_ALARM=0
 DATE_ALARM_OLD=0
+SEND_DELAY=10
 
 while [ 1 ];
       do
@@ -16,7 +21,7 @@ while [ 1 ];
 	      DATE_ALARM_OLD=$DATE_ALARM
 	      DATE_ALARM=$(date +%s)
 	      echo "ALARM ($TDEG °C) !!!"
-	      if [ $(expr $DATE_ALARM - $DATE_ALARM_OLD) -ge 10 ]; then
+	      if [ $(expr $DATE_ALARM - $DATE_ALARM_OLD) -ge $SEND_DELAY ]; then
 		  curl -k -X POST -H "Content-Type: application/json" -d '{"value1":"sensor_id = 123456", "value2":"temperature = '$TDEG' °C"}' https://maker.ifttt.com/trigger/gmail/with/key/nyGTOHaJMnkXJhgIVHrxPaL6CFuCDgLMhcSAbBc7ozr
 #		  echo "curl -k -X POST -H "Content-Type: application/json" -d '{"value1":"sensor_id = 123456", "value2":"temperature = '$TDEG' °C"}' https://maker.ifttt.com/trigger/gmail/with/key/nyGTOHaJMnkXJhgIVHrxPaL6CFuCDgLMhcSAbBc7ozr"
 	      else
