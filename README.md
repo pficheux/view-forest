@@ -8,7 +8,7 @@ The evolution of the climate leads us to be very attentive to the preservation o
 summer 2022, there was an explosion of the number of fires all around the world, including Europe and France. The south west
 of France is very famous for the "forêt de Landes" (The Landes Forest) wich is considered as one of the biggest in Europe.
 
-The forest is shared between the departements of Gironde, Landes and Lot-et-Garonne (Nouvelle Aquitaine). The area is about 1000000 ha. In july 2022, two major fires in Gironde destroyed more than 20000 ha in La Teste-de-Buch and Landiras.
+The forest is shared between the departements of Gironde, Landes and Lot-et-Garonne (Nouvelle Aquitaine). The area is about 1000000 ha. In july and August 2022, 3 major fires in Gironde destroyed more than 30000 ha in La Teste-de-Buch, Landiras and Saint-Magne.
 
 ### Goal
 
@@ -22,10 +22,10 @@ Here are the prerequistes:
 
 ## Current status
 
-The current repository includes 2 simple demonstrations on Raspberry Pi :
+The current repository includes 2 simple demonstrations on Raspberry Pi:
 
-- ```Yocto``` MQTT demo using a MPL115A2 sensor and sending the temperature to test.mosquitto.org using the "view-forest" topic (Yocto based)
-- ```BME688``` MQTT demo using a BME688 sensor and sending the values (temperature, pressure, hygrometry, gas resistance) to test.mosquitto.org using the "view-forest-bme688" topic
+- ```Yocto``` MQTT demo using a MPL115A2 sensor and sending the temperature to "test.mosquitto.org" using the "view-forest" topic (Yocto based)
+- ```BME688``` MQTT demo using a BME688 sensor and sending the values (temperature, pressure, hygrometry, gas resistance) to "test.mosquitto.org" using the "view-forest-bme688" topic
 
 
 
