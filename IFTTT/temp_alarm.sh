@@ -12,9 +12,13 @@ TMAX=30
 SLEEP_T=5
 DATE_ALARM=0
 DATE_C=0
-SEND_DELAY=10
+SEND_DELAY=60
 TDEG_O=0
 
+# Sensor ID
+SENSOR_ID=Pissos_1
+
+# IFTTT parameters
 KEY=nyGTOHaJMnkXJhgIVHrxPaL6CFuCDgLMhcSAbBc7ozr
 EVENT=gmail
 
@@ -36,13 +40,13 @@ while [ 1 ];
 	  DATE_C=$(date +%s)
 	  if [ $TDEG -gt $TMAX ]; then
 	      D=$(expr $DATE_C - $DATE_ALARM)
-	      echo "Delay since last alarm is $D"
+	      echo "Delay since last alarm is $D / $SEND_DELAY"
 	      # Send an alarm if delay > (alarm time - current time)
 	      if [ $D -gt $SEND_DELAY ]; then
   	          echo "*** Sending ALARM ($TDEG / $TDEG_O °C) !!!"
 		  DATE_ALARM=$(date +%s)
 		  if [ $DEMO -eq 0 ]; then
-		      curl -k -X POST -H "Content-Type: application/json" -d '{"value1":"sensor_id = 123456", "value2":"temperature = '$TDEG' °C"}' https://maker.ifttt.com/trigger/$EVENT/with/key/$KEY
+		      curl -k -X POST -H "Content-Type: application/json" -d '{"value1":"sensor_id = '$SENSOR_ID'", "value2":"temperature = '$TDEG' °C"}' https://maker.ifttt.com/trigger/$EVENT/with/key/$KEY
 		  fi    
 	      else
 		  echo "alarm already sent !"

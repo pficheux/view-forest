@@ -1,0 +1,94 @@
+> %Run -c $EDITOR_CONTENT
+
+Lecture du fichier baselines.txt
+
+**PF gBase/tAmbient (baselines.txt) : 13478.33 2474.717
+
+Fonction calcQairQuality
+
+Test 1
+------
+
+**PF/cAQ hRead/hBase: 50 40
+**PF/cAQ tAmbient: 2496
+
+**** gRes: 18800
+**PF/cAQ hRead/hBase: 50 40
+**PF/cAQ tAmbient: 2496
+**PF/cAQ tRead: 24.96
+**** gRes: 18800
+//Temperature: 24.96 C
+//Pressure: 101313 Pa
+//Humidity: 50 %
+**PF/cAQ hRead/hBase: 50 40
+**PF/cAQ tAmbient: 2496
+**** gRes: 18800
+==> IAQ: 45
+**PF/cAQ hRead/hBase: 50 40
+**PF/cAQ tAmbient: 2496
+**** gRes: 18800
+==> eCO2: 536 ppm
+
+Test 2
+------
+
+**PF/cAQ hRead/hBase: 50 40
+**PF/cAQ tAmbient: 2496
+**** gRes: 20600
+**PF/cAQ hRead/hBase: 50 40
+**PF/cAQ tAmbient: 2496
+**** gRes: 20600
+//Temperature: 24.96 C
+//Pressure: 101313 Pa
+//Humidity: 50 %
+**PF/cAQ hRead/hBase: 50 40
+**PF/cAQ tAmbient: 2496
+**PF/cAQ tRead: 24.96
+**** gRes: 20600
+==> IAQ: 40
+**PF/cAQ hRead/hBase: 50 40
+**PF/cAQ tAmbient: 2496
+**** gRes: 20600
+==> eCO2: 505 ppm
+
+Test 3
+------
+
+**PF/cAQ hRead/hBase: 48 40
+**PF/cAQ tAmbient: 2496
+**** gRes: 23500
+**PF/cAQ hRead/hBase: 48 40
+**PF/cAQ tAmbient: 2496
+**** gRes: 23500
+//Temperature: 24.96 C
+//Pressure: 101313 Pa
+//Humidity: 48 %
+**PF/cAQ hRead/hBase: 48 40
+**PF/cAQ tAmbient: 2496
+**** gRes: 23500
+==> IAQ: 30
+**PF/cAQ hRead/hBase: 48 40
+**PF/cAQ tAmbient: 2496
+**** gRes: 23500
+==> eCO2: 429 ppm
+
+Test 4
+------
+
+**PF/cAQ hRead/hBase: 48 40
+**PF/cAQ tAmbient: 2496
+**** gRes: 26100
+**PF/cAQ hRead/hBase: 48 40
+**PF/cAQ tAmbient: 2496
+**** gRes: 26100
+//Temperature: 24.96 C
+//Pressure: 101313 Pa
+//Humidity: 48 %
+**PF/cAQ hRead/hBase: 48 40
+**PF/cAQ tAmbient: 2496
+**** gRes: 26100
+==> IAQ: 25
+**PF/cAQ hRead/hBase: 48 40
+**PF/cAQ tAmbient: 2496
+**** gRes: 26100
+==> eCO2: 404 ppm
