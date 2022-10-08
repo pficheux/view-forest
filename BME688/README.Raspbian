@@ -1,0 +1,62 @@
+Raspbian installation for testing BME688
+========================================
+
+- Download the "Lite version (we use 2022-01-28-raspios-bullseye-armhf-lite.zip)
+
+- Copy the image to a Micro-SD
+
+$ sudo dd if=2022-01-28-raspios-bullseye-armhf-lite.img of=/dev/sda bs=1M 
+
+- Create an empty SSH file to enable the SSH server
+
+$ echo > /media/<user>/boot/SH
+
+- Boot the Pi and connect to is with SSH (with an Ethernet connection !)
+
+$ ssh pi@<board-IP-address> 
+
+-> default password is "raspberrypi"
+
+- Finalize the Pi installation with "raspi-config
+
+* Advanced Options / Expand Filesystem
+* Interface options / I2C
+* Interface options / Serial Port (to activate a console)
+* System Options / Wireless LAN
+
+-> reboot the system
+
+- Install some useful packages
+
+$ sudo apt-get update
+$ sudo apt-get install  i2c-tools git libpython3-dev
+
+- Install WiringPi
+
+$ git clone https://github.com/WiringPi/WiringPi.git                       
+$ cd WiringPi/                                                             
+$ ./build      
+
+- Test the BME688 sensor
+
+$ i2detect -y 1
+
+-> address must be 77
+
+- Download, compile and test the program
+
+$ git clone https://github.com/pficheux/view-forest.git
+$ cd BME688/VF
+$ make
+
+$ ./bme688
+2022-10-08 12:39:40 Nr 1, Tmp 22.08 °C, Prs 1021.19 hPa, Hum 52.66 %rH, GsR 6. 2
+0 kΩ, Status 0xa0
+
+The JSON version (-j option) sends only ONE frame in JSON format:
+
+$ ./bme688 -j                                           
+{"temperature":"22.08", "pressure":"1021.14", "humidity":"52.61", "gsr":"5.82"}
+
+
+
