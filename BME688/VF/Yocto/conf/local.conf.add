@@ -1,0 +1,11 @@
+# Local configuration
+MACHINE = "raspberrypi3"
+
+ENABLE_UART = "1"
+INHERIT += "rm_work"
+IMAGE_ROOTFS_EXTRA_SPACE = "10000"
+EXTRA_IMAGE_FEATURES += "package-management ssh-server-openssh debug-tweaks"
+PACKAGE_CLASSES = "package_ipk"
+
+# Enable I2C
+RPI_EXTRA_CONFIG_append = " \ndtparam=i2c_arm=on"
