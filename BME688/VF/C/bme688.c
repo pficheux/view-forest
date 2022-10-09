@@ -328,7 +328,7 @@ static struct PyModuleDef bme_module = {
 
 static void usage(char *s)
 {
-  printf ("Usage: %s [-j]\n", s);
+  printf ("Usage: %s [-j] [-t]\n", s);
   exit (1);
 }
   
@@ -340,7 +340,8 @@ PyMODINIT_FUNC PyInit_bme(void) {
 int main(int ac, char **av)
 {
   char *cp, *progname = basename(av[0]);
-  int  json_display = 0;
+  int  json_display = 0, text_display = 0;
+  
   while (--ac) {
     if ((cp = *++av) == NULL)
       break;
@@ -348,6 +349,9 @@ int main(int ac, char **av)
       switch(*cp) {
       case 'j' :
 	json_display = 1; break;
+
+      case 't' :
+	text_display = 1; break;
 
       case 'q' :
 	quiet = 1; break;
@@ -453,7 +457,17 @@ int main(int ac, char **av)
 
     if (n_fields) {
 #ifdef BME68X_USE_FPU
-      if (!json_display) {
+      if (json_display) {
+	printf ("{\"temperature\":\"%.2f\", \"pressure\":\"%.2f\", \"humidity\":\"%.2f\", \"gsr\":\"%.2f\"}\n", data.temperature, data.pressure/100, data.humidity, data.gas_resistance/1000);
+	i2c_close(&linux_device_handle);
+	exit(0);
+      }
+      else if (text_display) {
+	printf ("%.2f %.2f %.2f gsr %.2f\n", data.temperature, data.pressure/100, data.humidity, data.gas_resistance/1000);
+	i2c_close(&linux_device_handle);
+	exit(0);
+      }
+      else {
 	printf("%d-%02d-%02d %02d:%02d:%02d ", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
 	printf("Nr %u, Tmp %.2f °C, Prs %.2f hPa, Hum %.2f %%rH, GsR %.2f k\u03a9, Status 0x%x\n",
 	       sample_count,
@@ -463,11 +477,6 @@ int main(int ac, char **av)
 	       data.humidity,
 	       data.gas_resistance/1000,
 	       data.status);
-      }
-      else {
-	printf ("{\"temperature\":\"%.2f\", \"pressure\":\"%.2f\", \"humidity\":\"%.2f\", \"gsr\":\"%.2f\"}\n", data.temperature, data.pressure/100, data.humidity, data.gas_resistance/1000);
-	i2c_close(&linux_device_handle);
-	exit(0);
       }
 #else
       printf("%u, %lu, %d, %lu, %lu, %lu, 0x%x\n",
