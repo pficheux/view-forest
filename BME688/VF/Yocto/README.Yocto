@@ -5,6 +5,8 @@ You can test the BME688 configuration with Yocto (we have tested 3.1.16 - Dunfel
 
 1- Build and validate a standard "core-image-base" image on a Raspberry Pi 3
 
+-> https://meta-raspberrypi.readthedocs.io/en/latest/readme.html
+
 2- Add the VL layer to the environment
 
 $ bitbake-layers add-layer <layer-path>/meta-vf

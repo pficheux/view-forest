@@ -1,5 +1,5 @@
 pi3g.com	Original code from https://pi3g.com/wp-content/uploads/2021/04/BME688.zip
 Kitronik	Some tests on Kitronik MicroPython library (adaptation to C for eCO2 - in progress)
 systemd		Systemd configuration for the MQTT service
-VF		VF version of bme688 utility (in C)
+VF		VF version of bme688 utility (in C) + Yocto layer
 
