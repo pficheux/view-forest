@@ -1,7 +1,7 @@
 11/09/2022
 ==========
 
-- Adaptation de calcAirQuality() en C -> version static basées sur les valeurs utilisées en Python (sensor_values.txt)
+- Adaptation de calcAirQuality() en C -> version statique basée sur les valeurs utilisées en Python (sensor_values.txt)
 
 12/09/2022
 ==========
