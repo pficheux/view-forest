@@ -38,13 +38,7 @@ $ sudo tmp/deploy/sdk/poky-glibc-x86_64-vf-test-image-cortexa7t2hf-neon-vfpv4-ra
 $ source /opt/poky/3.1.16/environment-setup-cortexa7t2hf-neon-vfpv4-poky-linux-gnueabi
 
 $ cd BME688/VF/C
-
--> edit the Makefile to set the PYTHON
-
-# Yocto 3.1
-#PYTHON = python3.8
-
-$ make
+$ make PYTHON=python3.8
 $ scp bme688 root@<board-IP-address>:/home/root
 
 8- Test the program from the console or a SSH connection

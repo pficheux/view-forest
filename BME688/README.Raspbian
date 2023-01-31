@@ -9,7 +9,7 @@ $ sudo dd if=2022-01-28-raspios-bullseye-armhf-lite.img of=/dev/sda bs=1M
 
 - Create an empty SSH file to enable the SSH server
 
-$ echo > /media/<user>/boot/SH
+$ echo > /media/<user>/boot/SSH
 
 - Boot the Pi and connect to is with SSH (with an Ethernet connection !)
 
