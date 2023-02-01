@@ -28,22 +28,9 @@ $ sudo bmaptool copy tmp/deploy/images/raspberrypi3/vf-test-image-raspberrypi3.w
 root@raspberrypi3:~# wpa_passphrease <SSID> <SSID-password> >> /etc/wpa_supplicant.conf
 root@raspberrypi3:~# reboot
 
-6- Build and install the Yocto SDK including WiringPi and the Python3 wrappers for the C language
+6- Test the program from the console or a SSH connection
 
-$ bitbake -c populate_sdk vf-test-image
-$ sudo tmp/deploy/sdk/poky-glibc-x86_64-vf-test-image-cortexa7t2hf-neon-vfpv4-raspberrypi3-toolchain-3.1.16.sh
-
-7- Compile the bme688 program with the Yocto SDK and copy it to the board
-
-$ source /opt/poky/3.1.16/environment-setup-cortexa7t2hf-neon-vfpv4-poky-linux-gnueabi
-
-$ cd BME688/VF/C
-$ make PYTHON=python3.8
-$ scp bme688 root@<board-IP-address>:/home/root
-
-8- Test the program from the console or a SSH connection
-
-root@raspberrypi3:~# ./bme688 
+root@raspberrypi3:~# bme688 
 2018-03-09 12:51:51 Nr 1, Tmp 21.96 °C, Prs 1020.14 hPa, Hum 50.90 %rH, GsR 30 4
 .24 kΩ, Status 0xa0                                                             
 2018-03-09 12:51:54 Nr 2, Tmp 21.96 °C, Prs 1020.16 hPa, Hum 50.89 %rH, GsR 5. 7

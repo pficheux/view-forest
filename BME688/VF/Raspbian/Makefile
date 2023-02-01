@@ -1,7 +1,7 @@
 # Raspbian
 PYTHON = python3.9
 
-# Yocto 3.1
+# Yocto 3.1 SDK
 #PYTHON = python3.8
 
 PYTHON_DIR = $(SDKTARGETSYSROOT)/usr/include/$(PYTHON)

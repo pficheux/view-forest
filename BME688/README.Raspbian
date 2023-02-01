@@ -46,8 +46,8 @@ $ i2detect -y 1
 - Download, compile and test the program
 
 $ git clone https://github.com/pficheux/view-forest.git
-$ cd BME688/VF/C
-$ make
+$ cd BME688/VF/bme688-1.0
+$ make PYTHON=python3.9
 
 The default option displays the values every 3s:
 
