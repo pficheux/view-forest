@@ -15,7 +15,7 @@ $ echo > /media/<user>/boot/SSH
 
 $ ssh pi@<board-IP-address> 
 
--> default password is "raspberrypi"
+-> the default password is "raspberrypi"
 
 - Finalize the Pi installation with "raspi-config
 
@@ -41,23 +41,24 @@ $ ./build
 
 $ i2detect -y 1
 
--> address must be 77
+-> the address must be 77
 
 - Download, compile and test the program
 
 $ git clone https://github.com/pficheux/view-forest.git
-$ cd BME688/VF/bme688-1.0
-$ make PYTHON=python3.9
+$ cd BME688/VF/Raspbian
+$ make
+$ sudo make install
 
 The default option displays the values every 3s:
 
-$ ./bme688
+$ bme688
 2022-10-08 12:39:40 Nr 1, Tmp 22.08 °C, Prs 1021.19 hPa, Hum 52.66 %rH, GsR 6. 2
 0 kΩ, Status 0xa0
 
-The JSON version (-j option) sends only ONE frame in JSON format:
+The JSON version (-j option) sends only ONE frame in JSON format (same with -t with text format):
 
-$ ./bme688 -j                                           
+$ bme688 -j                                           
 {"temperature":"22.08", "pressure":"1021.14", "humidity":"52.61", "gsr":"5.82"}
 
 
