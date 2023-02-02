@@ -6,6 +6,27 @@ Lecture du fichier baselines.txt
 
 Fonction calcQairQuality
 
+  // Temperature
+  //  self.tRead = 24.96; // Valeur immédiate
+
+  // Test 1
+  //self.hRead = 50;  // humidity
+  //  self.gRes = 18800; // gas resistance
+
+  // Test 2
+  //  self.hRead = 50;
+  //    self.gRes = 20600;
+
+  // Test 3
+  //    self.hRead = 48;
+  //    self.gRes = 23500;
+
+  // Test 4
+  //    self.hRead = 48;
+  //    self.gRes = 26100;
+
+
+
 Test 1
 ------
 
