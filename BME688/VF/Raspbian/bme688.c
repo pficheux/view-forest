@@ -19,6 +19,9 @@
 #include "BME68x-Sensor-API/bme68x.h"
 #include "BME68x-Sensor-API/bme68x_defs.h"
 
+#include "libiaq.h"	// IAQ + eCO2
+
+
 #define SAMPLE_COUNT  UINT16_C(300)
 
 #define TIMEZONE "TZ=Europe/Berlin"
@@ -41,7 +44,7 @@ uint32_t time_ms = 0;
 uint8_t n_fields;
 uint16_t sample_count = 1;
 
-int quiet = 0;
+struct self_struct self; // IAQ
 
 // FUNCTIONS
 int i2c_open(int *ldh){
@@ -328,7 +331,7 @@ static struct PyModuleDef bme_module = {
 
 static void usage(char *s)
 {
-  printf ("Usage: %s [-j] [-t]\n", s);
+  printf ("Usage: %s [-j][-t]\n", s);
   exit (1);
 }
   
@@ -340,7 +343,7 @@ PyMODINIT_FUNC PyInit_bme(void) {
 int main(int ac, char **av)
 {
   char *cp, *progname = basename(av[0]);
-  int  json_display = 0, text_display = 0;
+  int  json_display = 0, text_display = 1;
   
   while (--ac) {
     if ((cp = *++av) == NULL)
@@ -352,9 +355,6 @@ int main(int ac, char **av)
 
       case 't' :
 	text_display = 1; break;
-
-      case 'q' :
-	quiet = 1; break;
 
       default: 
 	usage(progname);
@@ -455,28 +455,24 @@ int main(int ac, char **av)
       exit(-1);
     }
 
+    // Get IAQ + iCO2
+    self.hRead = data.humidity;
+    self.gRes = data.gas_resistance;
+    self.tRead = data.temperature;
+    if (get_iaq_eco2 (&self) < 0)
+      printf ("libIAQ error !\n");
+
     if (n_fields) {
 #ifdef BME68X_USE_FPU
       if (json_display) {
-	printf ("{\"temperature\":\"%.2f\", \"pressure\":\"%.2f\", \"humidity\":\"%.2f\", \"gsr\":\"%.2f\"}\n", data.temperature, data.pressure/100, data.humidity, data.gas_resistance/1000);
+	printf ("{\"temperature\":\"%.2f\", \"pressure\":\"%.2f\", \"humidity\":\"%.2f\", \"gsr\":\"%.2f\"}\n", data.temperature, data.pressure/100, data.humidity, data.gas_resistance);
 	i2c_close(&linux_device_handle);
 	exit(0);
       }
       else if (text_display) {
-	printf ("%.2f %.2f %.2f gsr %.2f\n", data.temperature, data.pressure/100, data.humidity, data.gas_resistance/1000);
+	printf ("%.2f %.2f %.2f gsr %.2f iaq %g eco2 %g\n", data.temperature, data.pressure/100, data.humidity, data.gas_resistance, self.iaqScore, self.eCO2Value);
 	i2c_close(&linux_device_handle);
 	exit(0);
-      }
-      else {
-	printf("%d-%02d-%02d %02d:%02d:%02d ", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
-	printf("Nr %u, Tmp %.2f °C, Prs %.2f hPa, Hum %.2f %%rH, GsR %.2f k\u03a9, Status 0x%x\n",
-	       sample_count,
-	       // (long unsigned int)time_ms,
-	       data.temperature,
-	       data.pressure/100,
-	       data.humidity,
-	       data.gas_resistance/1000,
-	       data.status);
       }
 #else
       printf("%u, %lu, %d, %lu, %lu, %lu, 0x%x\n",
@@ -489,7 +485,6 @@ int main(int ac, char **av)
 	     data.status);
 #endif
       sample_count++;
-      sleep(3);
     }
   }
 
