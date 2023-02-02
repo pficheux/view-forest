@@ -16,7 +16,7 @@ SRCS= $(BME68X_DIR)/bme68x.c bme688.c $(LIBIAQ_DIR)/iaq_eco2.c
 PROGS= bme688
 
 $(PROGS): $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS)  -lm -lrt -lwiringPi -l$(PYTHON) -lm -o $@
+	$(CC) $(CFLAGS) $(SRCS)  -lm -lwiringPi -l$(PYTHON) -o $@
 
 install:
 	mkdir -p $(DESTDIR)/usr/bin
