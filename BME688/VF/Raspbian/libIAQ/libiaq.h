@@ -7,7 +7,7 @@
 #define GBASE     13478.33; 
 
 // Ambient temperature to be read from baselines.txt
-#define AMBIENT_T  24.96;
+#define AMBIENT_T  24.74;
 
 struct self_struct {
   double hRead;
