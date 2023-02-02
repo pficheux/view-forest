@@ -69,6 +69,7 @@ void main (int ac, char **av)
   humidityOffset = self.hRead - self.hBase;  // Calculate the humidity offset from the baseline setting
   ambTemp = (self.tAmbient / 100);
   temperatureOffset = self.tRead - ambTemp; //Calculate the temperature offset from the ambient temperature
+  printf ("*** temp offset = %g\n",  temperatureOffset);
   humidityRatio = ((humidityOffset / self.hBase) + 1);
   temperatureRatio = (temperatureOffset / ambTemp);
 
@@ -78,6 +79,7 @@ void main (int ac, char **av)
   else
     humidityScore = self.hRead / self.hBase;
 
+  // 25% for humidity
   humidityScore = humidityScore * self.hWeight * 100;
   gasRatio = (self.gRes / self.gBase);
 

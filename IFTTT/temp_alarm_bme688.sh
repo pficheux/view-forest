@@ -19,6 +19,13 @@ SENSOR_ID=$(hostname)
 KEY=nyGTOHaJMnkXJhgIVHrxPaL6CFuCDgLMhcSAbBc7ozr
 EVENT=gmail
 
+# BME68x utility
+BME_PROG=$(which bme688)
+if [ "$BME_PROG" = "" ]; then
+      echo "Can't find the BME68x utility, exiting !"
+      exit 1
+fi
+
 while [ 1 ];
       do
 	  # Get the temp value
