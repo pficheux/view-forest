@@ -1,5 +1,4 @@
 #!/bin/sh
-#set -x
 
 # IFTTT parameters
 KEY=nyGTOHaJMnkXJhgIVHrxPaL6CFuCDgLMhcSAbBc7ozr
